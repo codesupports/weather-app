@@ -107,22 +107,22 @@ const Weather = () => {
                     <section className='upcoming-weather'>
                         <div className='sunrise'>
                             <p>Sunrise</p>
-                            <img src='./src/assets/sunrise.png' alt='' />
+                            <img src='../assets/sunrise.png' alt='' />
                             <p>{sunriseTimeString}</p>
                         </div>
                         <div className='sunset'>
                             <p>Sunset</p>
-                            <img src='./src/assets/sunset.png' alt='' />
+                            <img src='../src/assets/sunset.png' alt='' />
                             <p>{sunsetTimeString}</p>
                         </div>
                         <div className='minTemp'>
                             <p>Min Temp.</p>
-                            <img src='./src/assets/temperature-c.png' alt='' />
+                            <img src='../src/assets/temperature-c.png' alt='' />
                             <p>{data ? (data.main.temp_min | 0) : null} &deg;C </p>
                         </div>
                         <div className='maxTemp'>
                             <p>Max Temp.</p>
-                            <img src='./src/assets/temperature-c.png' alt='' />
+                            <img src='../src/assets/temperature-c.png' alt='' />
                             <p>{data ? (data.main.temp_max | 0) : null} &deg;C </p>
                         </div>
                         <div className='country'>

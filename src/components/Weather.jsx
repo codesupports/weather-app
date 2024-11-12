@@ -7,7 +7,7 @@ import temperature from '../assets/temperature.svg'
 import wind from '../assets/wind.svg'
 
 const Weather = () => {
-    const [city, setCity] = useState();
+    const [city, setCity] = useState("");
     const [cityName, setCityName] = useState();
     const [data, setData] = useState();
 
@@ -16,18 +16,28 @@ const Weather = () => {
 
 
 
-    const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=71a222a60e88e62b1eb3f417364dc3ec&units=metric`
+    const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName ? cityName : "Delhi"}&appid=71a222a60e88e62b1eb3f417364dc3ec&units=metric`
 
     const handleAddCity = () => {
         setCityName(city)
         getApi()
+        setCity('')
     }
 
     const getApi = async () => {
         try {
             const response = await fetch(BASE_URL)
-            const data = await response.json();
-            setData(data)
+            if (response.status === 404) {
+
+                throw new Error(alert("Check state name properly"));
+            }
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
+            if (response.status === 200) {
+                const data = await response.json();
+                setData(data)
+            }
         }
         catch (error) {
             console.log(error)
@@ -36,7 +46,7 @@ const Weather = () => {
 
     useEffect(() => {
         getApi()
-    }, [])
+    }, [cityName])
     // console.log(data, BASE_URL)
 
     let sunrise = data ? data.sys.sunrise : null;
@@ -107,22 +117,22 @@ const Weather = () => {
                     <section className='upcoming-weather'>
                         <div className='sunrise'>
                             <p>Sunrise</p>
-                            <img src='/src/assets/sunrise.png' alt='' />
+                            <img src='./src/assets/sunrise.png' alt='' />
                             <p>{sunriseTimeString}</p>
                         </div>
                         <div className='sunset'>
                             <p>Sunset</p>
-                            <img src='/src/assets/sunset.png' alt='' />
+                            <img src='./src/assets/sunset.png' alt='' />
                             <p>{sunsetTimeString}</p>
                         </div>
                         <div className='minTemp'>
                             <p>Min Temp.</p>
-                            <img src='/src/assets/temperature-c.png' alt='' />
+                            <img src='./src/assets/temperature-c.png' alt='' />
                             <p>{data ? (data.main.temp_min | 0) : null} &deg;C </p>
                         </div>
                         <div className='maxTemp'>
                             <p>Max Temp.</p>
-                            <img src='/src/src/assets/temperature-c.png' alt='' />
+                            <img src='./src/assets/temperature-c.png' alt='' />
                             <p>{data ? (data.main.temp_max | 0) : null} &deg;C </p>
                         </div>
                         <div className='country'>

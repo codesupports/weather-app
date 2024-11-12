@@ -55,7 +55,7 @@ main {
                 font-size: 14px;
                 padding: 10px 25px;
                 color: #333;
-
+                cursor: pointer;
             }
         }
     }

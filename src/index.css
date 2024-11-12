@@ -1,4 +1,4 @@
-@import url("href='https://fonts.googleapis.com/css?family=Poppins");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 /* 1. Use a more-intuitive box-sizing model */
 *,
@@ -16,7 +16,7 @@
 body {
 
   background-color: #e4e4e4;
-  font-family: 'Poppins', serif;
+  font-family: 'poppins', sans-serif !important;
 }
 
 /* 5. Improve media defaults */

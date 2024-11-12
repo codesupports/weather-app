@@ -14,8 +14,6 @@ const Weather = () => {
     // let dateTime = new Date().toLocaleString();
     let dateTime = `${new Date().toLocaleString('en-US', { weekday: 'long' })}, ${new Date().getDate()} ${new Date().toLocaleString('en-US', { month: 'long' })} ${new Date().getFullYear()} | ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
 
-
-
     const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName ? cityName : "Delhi"}&appid=71a222a60e88e62b1eb3f417364dc3ec&units=metric`
 
     const handleAddCity = () => {
@@ -62,16 +60,21 @@ const Weather = () => {
         hour: '2-digit',
         minute: '2-digit',
     });
+    const flag = `https://flagsapi.com/${data ? data.sys.country : null}/shiny/64.png`
 
     return (
         <>
 
             <main>
                 <div className="conatiner">
-                    <section class="wrapper">
+                    <section className="wrapper ">
                         <div id="stars"></div>
                         <div id="stars2"></div>
                         <div id="stars3"></div>
+                    </section>
+                    <section className='falling-star'>
+                        <span />
+                        <span />
                     </section>
                     <section className="header-row">
                         <div className="city-name">
@@ -137,7 +140,7 @@ const Weather = () => {
                         </div>
                         <div className='country'>
                             <p>Country</p>
-                            <img src={`https://flagsapi.com/${data ? data.sys.country : null}/flat/64.png`} alt="" />
+                            <img src={flag} alt="" />
                             <p>{sunsetTimeString}</p>
                         </div>
                     </section>

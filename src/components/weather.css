@@ -16,6 +16,10 @@ main {
     color: #fff;
     overflow: hidden;
 
+    .wrapper {
+        position: relative;
+    }
+
     .header-row {
         display: flex;
         justify-content: space-between;
@@ -33,6 +37,7 @@ main {
 
         }
 
+
         .search-bar {
             input {
                 border-radius: 5px 0 0 5px;
@@ -44,7 +49,7 @@ main {
                 font-weight: normal;
 
                 ::placeholder {
-                    color: #767da2;
+                    color: #ffffff;
                 }
             }
 
@@ -166,6 +171,8 @@ main {
 @media (max-width:767px) {
     .conatiner {
         width: 100%;
+        margin: 0 10px;
+        padding: 10px;
 
         .header-row {
 

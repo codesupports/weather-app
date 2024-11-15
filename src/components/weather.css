@@ -1,11 +1,15 @@
+.main-heading {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-
+    height: calc(100vh - 80px);
 }
-
 
 .conatiner {
     border: 1px solid #fff;
@@ -37,6 +41,11 @@ main {
 
         }
 
+        .errorMsg {
+            color: #ff0000;
+            font-size: 12px;
+            padding: 10px 0 0 0;
+        }
 
         .search-bar {
             input {
@@ -169,6 +178,11 @@ main {
 }
 
 @media (max-width:767px) {
+    main {
+        height: auto;
+        padding-top: 30px;
+    }
+
     .conatiner {
         width: 100%;
         margin: 0 10px;

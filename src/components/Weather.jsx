@@ -10,7 +10,7 @@ const Weather = () => {
     const [city, setCity] = useState("");
     const [cityName, setCityName] = useState();
     const [data, setData] = useState();
-
+    const [error, setError] = useState('');
     // let dateTime = new Date().toLocaleString();
     let dateTime = `${new Date().toLocaleString('en-US', { weekday: 'long' })}, ${new Date().getDate()} ${new Date().toLocaleString('en-US', { month: 'long' })} ${new Date().getFullYear()} | ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
 
@@ -20,13 +20,19 @@ const Weather = () => {
         setCityName(city)
         getApi()
         setCity('')
+        if (inputEdit.value.length <= 0) {
+            setError('Username is required. Please enter a value.');
+            return;
+        }
+        setError('');
     }
-
+    const inputEdit = document.getElementById('search');
     const getApi = async () => {
-        try {
-            const response = await fetch(BASE_URL)
-            if (response.status === 404) {
 
+        try {
+            const response = await fetch(BASE_URL);
+
+            if (response.status === 404) {
                 throw new Error(alert("Check state name properly"));
             }
             if (!response.ok) {
@@ -89,8 +95,12 @@ const Weather = () => {
                                 placeholder="Enter city name"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
+                                aria-required="true"
                             />
                             <button onClick={() => handleAddCity()}>Search</button>
+                            <div role="alert" aria-live="assertive" className="errorMsg">
+                                {error}
+                            </div>
                         </div>
                     </section>
 
@@ -104,7 +114,7 @@ const Weather = () => {
                         </div>
                         <div className="temp-info">
                             <div className="weather-img">
-                                <img src={`https://rodrigokamada.github.io/openweathermap/images/${data?.weather[0]?.icon}_t@4x.png`} alt='' />
+                                <img src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}@4x.png`} alt='' />
                             </div>
                             <div className="weather-img-info">
                                 <ul>
@@ -147,6 +157,7 @@ const Weather = () => {
 
                 </div>
             </main>
+            <p className='main-heading'>Weather App <span>(React + SCSS with Accessibility)</span> </p>
         </>
     )
 }

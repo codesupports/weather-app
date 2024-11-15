@@ -140,7 +140,7 @@ const Weather = () => {
                         </div>
                         <div className='minTemp'>
                             <p>Min Temp.</p>
-                            <img src='./temperature-c.png' alt='' />
+                            <img src='./temperature.png' alt='' />
                             <p>{data ? (data.main.temp_min | 0) : null} &deg;C </p>
                         </div>
                         <div className='maxTemp'>
@@ -151,7 +151,7 @@ const Weather = () => {
                         <div className='country'>
                             <p>Country</p>
                             <img src={flag} alt="" />
-                            <p>{sunsetTimeString}</p>
+                            <p>&nbsp;</p>
                         </div>
                     </section>
 
